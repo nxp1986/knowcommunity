@@ -154,7 +154,7 @@ public class HttpUtils {
      * @param object   网络返回的数据
      * @param callback 结果回调
      */
-    private void sendSuccessResultCallback(final Object object, final ResultCallback callback) {
+    public void sendSuccessResultCallback(final Object object, final ResultCallback callback) {
         if (callback == null) {
             return;
         }
@@ -173,7 +173,7 @@ public class HttpUtils {
      * @param e
      * @param callback
      */
-    private void sendFailResultCallback(final Request request, final Exception e, final ResultCallback callback) {
+    public void sendFailResultCallback(final Request request, final Exception e, final ResultCallback callback) {
         if (callback == null) {
             return;
         }

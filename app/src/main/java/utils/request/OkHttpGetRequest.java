@@ -1,5 +1,7 @@
 package utils.request;
 
+import android.text.TextUtils;
+
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 
@@ -16,7 +18,28 @@ public class OkHttpGetRequest extends OkHttpRequest {
 
     @Override
     protected Request buildRequest() {
-        return null;
+        if (TextUtils.isEmpty(mUrl)) {
+            throw new IllegalArgumentException("the url can not be empty");
+        }
+
+        mUrl = appendParams(mUrl, mParams);
+        Request.Builder builder = new Request.Builder();
+        appendHeader(builder, mHeaders);
+        builder.url(mUrl).tag(mTag);
+        return builder.build();
+    }
+
+    private String appendParams(String url, Map<String, String> params) {
+        StringBuffer buffer = new StringBuffer();
+        buffer.append(url +"?");
+        if (params != null && !params.isEmpty()) {
+            for (String key : params.keySet()) {
+                buffer.append(key).append("=").append(params.get(key)).append("&");
+            }
+        }
+
+        buffer = buffer.deleteCharAt(buffer.length() - 1);
+        return buffer.toString();
     }
 
     @Override

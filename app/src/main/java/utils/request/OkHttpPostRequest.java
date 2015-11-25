@@ -118,6 +118,11 @@ public class OkHttpPostRequest extends OkHttpRequest {
         return countingRequestBody;
     }
 
+    /**
+     * builder 添加参数
+     * @param builder 传入的builder
+     * @param params 参数
+     */
     private void addParams(FormEncodingBuilder builder, Map<String, String> params) {
         if (builder == null) {
             throw new IllegalArgumentException("builder can not be empty");

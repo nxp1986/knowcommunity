@@ -27,7 +27,7 @@ dependencies {
     compile 'com.facebook.fresco:fresco:0.6.0+'
     //网络访问框架
     compile 'com.squareup.okhttp:okhttp:2.6.0'
-    //json解析
+    //json解析框架
     compile 'com.google.code.gson:gson:2.4'
 
 }
