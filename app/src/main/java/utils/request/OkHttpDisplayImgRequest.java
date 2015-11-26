@@ -1,5 +1,7 @@
 package utils.request;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.widget.ImageView;
 
 import com.squareup.okhttp.Call;
@@ -10,7 +12,9 @@ import com.squareup.okhttp.Response;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
+import java.util.concurrent.RunnableFuture;
 
+import utils.ImageUtils;
 import utils.ResultCallback;
 
 /**
@@ -30,7 +34,7 @@ public class OkHttpDisplayImgRequest extends OkHttpGetRequest {
     @Override
     public void invokeAsyn(final ResultCallback callback) {
         prepareInvoked(callback);
-        Call call = mOkHttpClient.newCall(mRequest);
+        final Call call = mOkHttpClient.newCall(mRequest);
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Request request, IOException e) {
@@ -43,16 +47,57 @@ public class OkHttpDisplayImgRequest extends OkHttpGetRequest {
                 InputStream is = null;
                 try {
                     is = response.body().byteStream();
+                    //通过流对象获取到的imageSize
+                    ImageUtils.ImageSize imageSize = ImageUtils.getImageSize(is);
+                    //通过imageView获取到imageSize
+                    ImageUtils.ImageSize imageViewSize = ImageUtils.getImageViewSize(mImageView);
+                    int inSampleSieze = ImageUtils.calculateInSampleSize(imageSize, imageViewSize);
+                    try {
+                        is.reset();
+                    } catch (IOException e) {
+                        response = getInputStream();
+                        is = response.body().byteStream();
+                    }
 
+                    BitmapFactory.Options options = new BitmapFactory.Options();
+                    options.inJustDecodeBounds = false;
+                    options.inSampleSize = inSampleSieze;
+                    final Bitmap bitmap = BitmapFactory.decodeStream(is);
+                    mHttpsUtils.getDelivery().post(new Runnable() {
+                        @Override
+                        public void run() {
+                            mImageView.setImageBitmap(bitmap);
+                        }
+                    });
+                    mHttpsUtils.sendSuccessResultCallback(mRequest, callback);
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    setErrorRes();
+                    mHttpsUtils.sendFailResultCallback(mRequest, e, callback);
+                } finally {
+                    if (is != null) {
+                        try {
+                            is.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
             }
         });
     }
 
-    private void setErrorRes() {
+    private Response getInputStream() throws IOException {
+        Call call = mOkHttpClient.newCall(mRequest);
+        return call.execute();
+    }
 
+    private void setErrorRes() {
+        mHttpsUtils.getDelivery().post(new Runnable() {
+            @Override
+            public void run() {
+                mImageView.setImageResource(mErrorResId);
+            }
+        });
     }
 
     @Override
