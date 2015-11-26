@@ -1,4 +1,4 @@
-package utils.request;
+package OkhttpUtils.request;
 
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -11,8 +11,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 
-import utils.HttpUtils;
-import utils.ResultCallback;
+import OkhttpUtils.HttpUtils;
+import OkhttpUtils.ResultCallback;
 
 /**
  * Created by Slope on 2015/11/24.

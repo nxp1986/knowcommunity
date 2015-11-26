@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.slope.knowcommunity"
-        minSdkVersion 11
+        minSdkVersion 14
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -29,5 +29,7 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:2.6.0'
     //json解析框架
     compile 'com.google.code.gson:gson:2.4'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.4'
+    compile 'com.loopj.android:android-async-http:1.4.8'
 
 }

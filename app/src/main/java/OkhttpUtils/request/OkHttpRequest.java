@@ -1,4 +1,4 @@
-package utils.request;
+package OkhttpUtils.request;
 
 import android.util.Pair;
 import android.widget.ImageView;
@@ -14,8 +14,8 @@ import java.io.IOException;
 import java.util.IdentityHashMap;
 import java.util.Map;
 
-import utils.HttpUtils;
-import utils.ResultCallback;
+import OkhttpUtils.HttpUtils;
+import OkhttpUtils.ResultCallback;
 
 /**
  * OkHttp的请求

@@ -1,4 +1,4 @@
-package utils.request;
+package OkhttpUtils.request;
 
 import android.text.TextUtils;
 
@@ -10,7 +10,7 @@ import com.squareup.okhttp.RequestBody;
 import java.io.File;
 import java.util.Map;
 
-import utils.ResultCallback;
+import OkhttpUtils.ResultCallback;
 
 /**
  * Created by Slope on 2015/11/24.

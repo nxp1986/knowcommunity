@@ -1,13 +1,10 @@
-package utils;
+package OkhttpUtils;
 
 import com.google.gson.internal.$Gson$Types;
 import com.squareup.okhttp.Request;
 
-import org.xmlpull.v1.XmlPullParser;
-
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
-import java.sql.Types;
 
 /**
  * 带泛型的结果回调

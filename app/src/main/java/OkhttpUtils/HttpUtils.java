@@ -1,4 +1,4 @@
-package utils;
+package OkhttpUtils;
 
 import android.os.Build;
 import android.os.Handler;
@@ -15,7 +15,6 @@ import com.squareup.okhttp.Response;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Modifier;
-import java.security.Key;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
@@ -118,12 +117,12 @@ public class HttpUtils {
                     return;
                 }
                 try {
-                    String string = response.body().toString();
+                    String string = response.body().string();
                     if (resultCallback.mType == String.class) {
                         sendSuccessResultCallback(string, resultCallback);
                     } else {
-                        mGson.fromJson(string, resultCallback.mType);
-                        sendSuccessResultCallback(string, resultCallback);
+                        Object object = mGson.fromJson(string, resultCallback.mType);
+                        sendSuccessResultCallback(object, resultCallback);
                     }
                 } catch (JsonParseException e) {//Json解析的错误
                     sendFailResultCallback(response.request(), e, resultCallback);
@@ -145,7 +144,7 @@ public class HttpUtils {
     public <T> T execute(Request request, Class<T> clazz) throws IOException {
         Call call = mOkHttpClient.newCall(request);
         Response execute = call.execute();
-        String string = execute.body().toString();
+        String string = execute.body().string();
         return mGson.fromJson(string, clazz);
     }
 

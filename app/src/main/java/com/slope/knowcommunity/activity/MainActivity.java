@@ -1,8 +1,15 @@
-package com.slope.knowcommunity;
+package com.slope.knowcommunity.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
+import com.slope.knowcommunity.R;
+
+/**
+ * @author Slope
+ * @desc
+ * @createData 2015/11/26 16:00
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override

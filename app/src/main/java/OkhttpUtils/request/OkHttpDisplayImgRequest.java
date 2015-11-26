@@ -1,4 +1,4 @@
-package utils.request;
+package OkhttpUtils.request;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,10 +12,9 @@ import com.squareup.okhttp.Response;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
-import java.util.concurrent.RunnableFuture;
 
-import utils.ImageUtils;
-import utils.ResultCallback;
+import OkhttpUtils.ImageUtils;
+import OkhttpUtils.ResultCallback;
 
 /**
  * 加载图片的异步任务

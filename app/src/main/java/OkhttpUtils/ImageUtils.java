@@ -1,4 +1,4 @@
-package utils;
+package OkhttpUtils;
 
 import android.graphics.BitmapFactory;
 import android.util.DisplayMetrics;
@@ -100,7 +100,7 @@ public class ImageUtils {
             wight = params.width;
         }
         if (wight <= 0) {
-            wight = getimageViewFieldValue(view, "mMaxWight");
+            wight = getimageViewFieldValue(view, "mMaxWidth");
         }
         if (wight <= 0) {
             wight = view.getContext().getResources().getDisplayMetrics().widthPixels;
