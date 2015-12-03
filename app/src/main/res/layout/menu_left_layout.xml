@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="360dp"
-              android:layout_height="match_parent"
-              android:clickable="true"
-              android:orientation="vertical">
+    android:layout_width="360dp"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/menu_content"
@@ -14,16 +14,18 @@
         android:paddingBottom="8dp">
 
         <LinearLayout
+            android:id="@+id/menu_lagin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
+            android:clickable="true"
             android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/ic_account_circle_white_24dp"/>
+                android:background="@mipmap/ic_account_circle_white_24dp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -32,7 +34,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="请登录"
                 android:textColor="@color/light_menu_header_tv"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -45,48 +47,53 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
+                android:clickable="true"
                 android:drawableLeft="@mipmap/ic_star_white_24dp"
                 android:drawablePadding="10dp"
                 android:gravity="center"
                 android:text="我的收藏"
-                android:textColor="@color/light_menu_header_tv"/>
+                android:textColor="@color/light_menu_header_tv" />
 
             <TextView
                 android:id="@+id/menu_file_download"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
+                android:clickable="true"
                 android:drawableLeft="@mipmap/ic_file_download_white_24dp"
                 android:drawablePadding="10dp"
                 android:gravity="center"
                 android:text="离线下载"
-                android:textColor="@color/light_menu_header_tv"/>
+                android:textColor="@color/light_menu_header_tv" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/menu_home_page"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
         android:background="@color/dark_menu_listview_textcolor"
+        android:gravity="center_vertical"
         android:padding="15dp">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/commodity_selector"/>
+            android:background="@drawable/commodity_selector" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginLeft="10dp"
-            android:text="首页"/>
+            android:gravity="center"
+            android:text="首页" />
     </LinearLayout>
 
     <ListView
-        android:id="@+id/mennu_item"
+        android:id="@+id/menu_listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
         android:divider="@android:color/transparent"
-        android:scrollbars="none"/>
+        android:scrollbars="none" />
 </LinearLayout>
